@@ -1,0 +1,39 @@
+[project]
+name = "hydrochoerus"
+version = "0.1.0"
+description = "Fitting superconductivity specific heat"
+readme = "README.md"
+authors = [
+    { name = "Dmytro Skachko", email = "dmytro.skachko@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "ruff>=0.16.10",
+]
+
+[project.scripts]
+hydrochoerus = "hydrochoerus:main"
+
+[build-system]
+requires = ["uv_build>=0.12.22,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.ruff.lint]
+select = [
+    "E", "W", "F", "I", "B", "UP", "SIM", "C4", "NPY", "PT", "RUF",     
+]
+ignore = [
+    "E501",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
