@@ -7,7 +7,9 @@ authors = [
     { name = "Dmytro Skachko", email = "dmytro.skachko@gmail.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "numpy>=2.5.4",
+]
 
 [dependency-groups]
 dev = [
