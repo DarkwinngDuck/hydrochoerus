@@ -1,0 +1,1 @@
+GAP_RATIO_SCALE = 2
