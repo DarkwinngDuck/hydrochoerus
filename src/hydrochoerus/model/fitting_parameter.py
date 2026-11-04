@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 
+# TODO: errors
 @dataclass(frozen=True)
 class FittingParameter:
     """DTO for fitting parameters: anisotropy, weighting two-gap model, alpha"""
