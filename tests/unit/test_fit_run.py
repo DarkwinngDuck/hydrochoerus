@@ -1,5 +1,6 @@
 import pytest
 
+from hydrochoerus.consts import ALPHA_BCS
 from hydrochoerus.model.fit_run import (
     FitResult,
     FitRun,
@@ -11,7 +12,7 @@ from hydrochoerus.model.fit_run import (
 
 
 def mock_fit_result() -> FitResult:
-    return FitResult({"alpha": 1.764}, Metrics(residual=0.0, r_squared=1.0, r_factor=0.0))
+    return FitResult({"alpha": ALPHA_BCS}, Metrics(residual=0.0, r_squared=1.0, r_factor=0.0))
 
 
 def mock_fit_run() -> FitRun:
