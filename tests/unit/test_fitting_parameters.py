@@ -1,12 +1,12 @@
 import pytest
 
+from hydrochoerus.consts import ALPHA_BCS
 from hydrochoerus.model.fitting_parameter import FittingParameter
 
-alpha_bcs_const = 1.764
 alpha_bcs = FittingParameter(
     "alpha_bcs",
     "2 delta /k_B T_c",
-    default_guess=1.764,
+    default_guess=ALPHA_BCS,
     bounds=(0.01, 5.0),
     scale_ratio=2,
 )
@@ -17,11 +17,11 @@ anisotropy = FittingParameter("anisotropy", "epsilon", default_guess=0.5, bounds
 
 
 def test_gap_ratio_scaled_correctly():
-    assert alpha_bcs.scale(alpha_bcs_const) == pytest.approx(alpha_bcs_const * 2)
+    assert alpha_bcs.scale(ALPHA_BCS) == pytest.approx(ALPHA_BCS * 2)
 
 
 def test_gap_ratio_converts_correctly():
-    assert alpha_bcs.from_scaled(alpha_bcs.scale(alpha_bcs_const)) == pytest.approx(alpha_bcs_const)
+    assert alpha_bcs.from_scaled(alpha_bcs.scale(ALPHA_BCS)) == pytest.approx(ALPHA_BCS)
 
 
 @pytest.mark.parametrize("parameter", [two_gap_weight_ratio, anisotropy])
