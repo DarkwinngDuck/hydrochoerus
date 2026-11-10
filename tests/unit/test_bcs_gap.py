@@ -12,24 +12,24 @@ BCS_TABLE = [
 ]
 
 
-@pytest.mark.parametrize(("reduced_temperature", "expected_gap"), BCS_TABLE)
-def test_should_match_bcs_table(reduced_temperature, expected_gap):
-    assert bcs_reduced_gap(reduced_temperature) == pytest.approx(expected_gap, abs=1e-4)
+@pytest.mark.parametrize(("T_reduced", "expected_gap"), BCS_TABLE)
+def test_should_match_bcs_table(T_reduced, expected_gap):
+    assert bcs_reduced_gap(T_reduced) == pytest.approx(expected_gap, abs=1e-4)
 
 
 def test_should_be_zero_at_tc():
-    reduced_temperature = 1.0
+    T_reduced = 1.0
     expected_gap = 0.0
-    assert bcs_reduced_gap(reduced_temperature) == expected_gap
+    assert bcs_reduced_gap(T_reduced) == expected_gap
 
 
 def test_should_be_zero_above_tc():
-    reduced_temperature = 1.2
+    T_reduced = 1.2
     expected_gap = 0.0
-    assert bcs_reduced_gap(reduced_temperature) == expected_gap
+    assert bcs_reduced_gap(T_reduced) == expected_gap
 
 
 def test_should_be_one_low_temperature():
-    reduced_temperature = 0.1
+    T_reduced = 0.1
     expected = 1.0
-    assert bcs_reduced_gap(reduced_temperature) == pytest.approx(expected, abs=1e-4)
+    assert bcs_reduced_gap(T_reduced) == pytest.approx(expected, abs=1e-4)
