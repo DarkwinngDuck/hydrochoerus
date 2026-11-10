@@ -41,3 +41,7 @@ ignore = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = [
+    "integration: compares published data",
+    "slow: takes more than a few seconds",
+] 

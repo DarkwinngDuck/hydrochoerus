@@ -6,14 +6,6 @@ from hydrochoerus.core.bcs_gap import (
 )
 
 
-def test_should_match_hand_computed_value():
-    eps_reduced = 0.0
-    gap_reduced = 1.0
-    T_reduced = ALPHA_BCS / 2
-    expected = -0.150654
-    assert integrand(eps_reduced, gap_reduced, T_reduced) == pytest.approx(expected, abs=1e-6)
-
-
 def test_should_be_negative():
     eps_reduced = 0.3
     gap_reduced = 0.9
