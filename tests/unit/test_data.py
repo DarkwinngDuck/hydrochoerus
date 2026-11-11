@@ -3,7 +3,7 @@ import dataclasses
 import numpy as np
 import pytest
 
-from hydrochoerus.model.data import ExperimentalData
+from hydrochoerus.model.experimental_data import ExperimentalData
 
 
 def create_fixture():
