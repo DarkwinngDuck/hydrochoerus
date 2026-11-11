@@ -1,7 +1,8 @@
 import numpy as np
 import pytest
 
-from hydrochoerus.model.gap_grid import GapGrid, ShapeError
+from hydrochoerus.model.gap_grid import GapGrid
+from hydrochoerus.utils.readonly_columns import ShapeError
 
 mock_reduced_gaps = np.array([1.0, 0.9, 0.5, 0.0])
 mock_reduced_temperatures = np.array([0.2, 0.5, 0.9, 1.1])
