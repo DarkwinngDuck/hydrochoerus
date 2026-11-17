@@ -5,6 +5,7 @@ import pytest
 from annotated_types import Ge, Le
 from pydantic import Field, ValidationError
 
+from hydrochoerus.model.gap_grid import GapGrid
 from hydrochoerus.model.models import Gap, Model, ModelType, ParameterType, Weight
 from hydrochoerus.model.single_alpha_model import SingleAlpha
 from hydrochoerus.model.two_alpha_model import TwoAlpha
@@ -138,6 +139,12 @@ def test_should_round_trip_free_fields():
     target = PairModel(alpha=3.0, x=0.25)
     free = ["x"]
     assert start.with_vector(free, target.vector(free)) == target
+
+
+def test_should_refuse_curve_on_a_model_without_one():
+    grid = GapGrid(np.array([0.5]), np.array([0.9]), np.array([-1.0]))
+    with pytest.raises(NotImplementedError, match="PairModel"):
+        PairModel().curve(grid)
 
 
 def test_should_return_itself_when_normalised():

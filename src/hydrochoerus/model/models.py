@@ -2,8 +2,12 @@ from collections.abc import Sequence
 from enum import StrEnum
 from typing import Annotated, Self
 
+import numpy as np
 from annotated_types import Ge, Le
 from pydantic import BaseModel, ConfigDict
+
+from hydrochoerus.core.specific_heat import CesOnGrid, ces_on_grid
+from hydrochoerus.model.gap_grid import GapGrid
 
 
 class ParameterType(StrEnum):
@@ -48,6 +52,9 @@ class Model(BaseModel):
     def with_vector(self, free: Sequence[str], values: Sequence[float]) -> Self:
         update = dict(zip(free, map(float, values), strict=True))
         return self.model_validate(self.model_dump() | update)
+
+    def curve(self, gap: GapGrid, *, ces: CesOnGrid = ces_on_grid) -> np.ndarray:
+        raise NotImplementedError(f"{type(self).__name__} has no curve")
 
     def normalised(self) -> Self:
         return self
